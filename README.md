@@ -1,5 +1,4 @@
 # errorbarxy: 
-## Plot errors in x and y using MATLAB.
 
 What is it?
 ----------------- 
