@@ -7,7 +7,7 @@ Errors can be asymmetric and vary by data point.
 
 
 For comments, questions, or suggestions, please email cthissen@gmail.com or 
-leave a comment under the issues tab at github.com/cthissen/estream2
+leave a comment under the issues tab at github.com/cthissen/errorbarxy/issues
 
 Christopher J. Thissen, Yale University  
 
