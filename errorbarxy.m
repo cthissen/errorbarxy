@@ -1,22 +1,21 @@
 function [hdx,hdy] = errorbarxy(varargin)
 %   errorbarxy(x,y,dx,dy) plots horizontal and vertical error bars at
 %   (x,y). x and y must be vectors of the same length. If dx is a scalar,
-%   errorbarxy plots symmetric error bars from x-dx to x+dx for each x. If
-%   dx is a vector, each x will have different, but symmetric error bars.
-%   If dx is an array with 2 columns or 2 rows, the lower deviation is
-%   specified by the first row or column, and the upper deviation by the
-%   second. No errors will be plotted for x if dx = []. NaN and Inf values
-%   are treated as zeros. dy has the same behavior as dx
-%   applied to y.
+%   errorbarxy plots symmetric error bars from x-dx to x+dx. If dx is a
+%   vector, each x will have different, but symmetric error bars. If dx is
+%   an array with 2 columns or 2 rows, the lower deviation is specified by
+%   the first row or column, and the upper deviation by the second. No
+%   errors will be plotted for x if dx = []. NaN and Inf values are treated
+%   as zeros. dy has the same behavior applied to y.
 %
 %   errorbarxy(...,'LineSpec') uses the color and linestyle specified by
-%   the string 'LineSpec' to plot the error bars. Any markers will be
-%   applied to the ends of the error bars.
+%   the string 'LineSpec' to plot the error bars. Mmarkers will be applied
+%   to the ends of the error bars.
 %
 %   errorbarxy(AX,...) plots into AX instead of GCA.
 %
-%   [hdx,hdy] = errorbarxy(...) returns a vectors of line handles for x
-%   error bars and y error bars.
+%   [hdx,hdy] = errorbarxy(...) returns vectors of line handles for x and y
+%   error bars.
 %
 %   For example,
 %     x = linspace(0,2,20);
@@ -26,6 +25,8 @@ function [hdx,hdy] = errorbarxy(varargin)
 %     plot(x,y,'.-k');
 %     errorbarxy(x,y,dx,dy);
 %   draws symmetric error bars around x and y
+%
+%   Additional examples can be found in test_errorbarxy.m
 %
 %   Note. Error bars are moved to the bottom layer, as this is usually the
 %   desired behavior. Apply uistack to hdx and/or hdy to change this.
@@ -55,7 +56,6 @@ if handleCheck
     
 else
     hAx = gca;
-    hold(hAx,'on');
     x  = varargin{1};
     y  = varargin{2};
     dx = varargin{3};
@@ -118,25 +118,16 @@ assert(all(size(x) == size(y)),'x and y do not have the same dimensions');
 assert(all(size(x) == size(dx(:,1))),'x and dx do not have the same number of data');
 assert(all(size(y) == size(dy(:,1))),'y and dy do not have the same number of data');
 
+%% plot error bars 
+xMinus = x - dx(:,1);
+xPlus  = x + dx(:,2);
+yMinus = y - dy(:,1);
+yPlus  = y + dy(:,2);
 
-%%
-
-nData = numel(x);
 hold(hAx,'on');
-hdx = gobjects(1,nData);
-hdy = gobjects(1,nData);
-for iData = 1:nData
-    % plot x errors
-    xMinus = x(iData) - dx(iData,1);
-    xPlus  = x(iData) + dx(iData,2);
-    hdx(iData) = plot(hAx,[xMinus,xPlus],[y(iData),y(iData)],plotAttributes{:});
+hdx = plot(hAx,[xMinus,xPlus]',[y,y]',plotAttributes{:});
+hdy = plot(hAx,[x,x]',[yMinus,yPlus]',plotAttributes{:});
 
-    % plot y errors
-    yMinus = y(iData) - dy(iData,1);
-    yPlus  = y(iData) + dy(iData,2);
-    hdy(iData) = plot(hAx,[x(iData),x(iData)],[yMinus,yPlus],plotAttributes{:});
-    
-end
 
 % move error bars to bottom layer
 uistack(hdx,'bottom');
