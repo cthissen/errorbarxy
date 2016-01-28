@@ -2,7 +2,7 @@
 
 What is it?
 ----------------- 
-Errors can be asymmetric and vary by data point.
+Errors can be asymmetric and vary by data point.  
 <img src="https://github.com/cthissen/errorbarxy/blob/master/errorbarxy.png" alt="errorbarxy" width="300px" height="300px">
 
 
@@ -32,12 +32,12 @@ draws error bars for x and y.
 
 <img src="https://github.com/cthissen/errorbarxy/blob/master/errorbarxy2.png" alt="errorbarxy" width="300px" height="300px">
 
-Addtional details are given in errorbarxy.m. For examples see test_errorbarxy.m. No toolboxes are required.
+Addtional details are in errorbarxy.m. For examples see test_errorbarxy.m. No toolboxes are required.
 
 The Latest Version
 ------------------ 
 Details of the latest version can be found on the github project page under 
-  server project page under https://github.com/cthissen/Drex-MATLAB
+  server project page under https://github.com/cthissen/errorbarxy
 
 Contributors
 ------------------ 
