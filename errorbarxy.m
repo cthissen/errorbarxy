@@ -39,7 +39,7 @@ function [hdx,hdy] = errorbarxy(varargin)
 narginchk(4,inf);
 
 % set default plot options
-defaultLineSpec = {'-k','LineWidth',1};
+defaultLineSpec = {'-b','LineWidth',1};
 
 % check if first input is axes handle
 handleCheck = ishandle(varargin{1});
