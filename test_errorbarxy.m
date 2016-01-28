@@ -36,12 +36,34 @@ dy = 0.05*ones(size(x));
 plot(x,y,'.-b');
 errorbarxy(x,y,dx,dy);
 
+%% assymmetric dx'
+close all; clear all
+x = linspace(0,2,20);
+y = sin(2*pi*x);
+dx(:,1) = 0.1*ones(numel(x),1);
+dx(:,2) = 0.3*ones(numel(x),1);
+dx = dx';
+dy = 0.05*ones(size(x));
+plot(x,y,'.-b');
+errorbarxy(x,y,dx,dy);
+
 %% assymmetric dy
 close all; clear all
 x = linspace(0,2,20);
 y = sin(2*pi*x);
 dy(:,1) = 0.1*ones(numel(x),1);
 dy(:,2) = 0.3*ones(numel(x),1);
+dx = 0.05*ones(size(x));
+plot(x,y,'.-b');
+errorbarxy(x,y,dx,dy);
+
+%% assymmetric dy'
+close all; clear all
+x = linspace(0,2,20);
+y = sin(2*pi*x);
+dy(:,1) = 0.1*ones(numel(x),1);
+dy(:,2) = 0.3*ones(numel(x),1);
+dy = dy';
 dx = 0.05*ones(size(x));
 plot(x,y,'.-b');
 errorbarxy(x,y,dx,dy);
