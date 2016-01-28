@@ -38,6 +38,9 @@ function [hdx,hdy] = errorbarxy(varargin)
 %% parse and check inputs
 narginchk(4,inf);
 
+% set default plot options
+defaultLineSpec = {'-k','LineWidth',1};
+
 % check if first input is axes handle
 handleCheck = ishandle(varargin{1});
 if handleCheck
@@ -49,9 +52,9 @@ if handleCheck
     dy  = varargin{5};  
     % set default plot options
     if nargin == 5
-        plotAttributes = {'-k','LineWidth',1};
+        lineSpec = defaultLineSpec;
     else 
-        plotAttributes = varargin(6:nargin);
+        lineSpec = varargin(6:nargin);
     end
     
 else
@@ -60,20 +63,20 @@ else
     y  = varargin{2};
     dx = varargin{3};
     dy = varargin{4};
-    % set default plot options
     if nargin == 4
-        plotAttributes = {'-k','LineWidth',1};
+        lineSpec = defaultLineSpec;
     else
-        plotAttributes = varargin(5:nargin);
+        lineSpec = varargin(5:nargin);
     end
     
 end
   
 validateattributes(x,{'numeric'},{'vector'});
 validateattributes(y,{'numeric'},{'vector'});
-validateattributes(dx,{'numeric'},{'real','nonnegative'});
-validateattributes(dy,{'numeric'},{'real','nonnegative'});
+validateattributes(dx,{'numeric'},{'2d','real','nonnegative'});
+validateattributes(dy,{'numeric'},{'2d','real','nonnegative'});
 
+% check dx and dy vector or array
 [nrowdx,ncoldx] = size(dx);
 if ncoldx == 1 || nrowdx == 1
     % symmetric errors in x
@@ -125,9 +128,8 @@ yMinus = y - dy(:,1);
 yPlus  = y + dy(:,2);
 
 hold(hAx,'on');
-hdx = plot(hAx,[xMinus,xPlus]',[y,y]',plotAttributes{:});
-hdy = plot(hAx,[x,x]',[yMinus,yPlus]',plotAttributes{:});
-
+hdx = plot(hAx,[xMinus,xPlus]',[y,y]',lineSpec{:});
+hdy = plot(hAx,[x,x]',[yMinus,yPlus]',lineSpec{:});
 
 % move error bars to bottom layer
 uistack(hdx,'bottom');

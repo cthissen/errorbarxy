@@ -138,7 +138,14 @@ plot(x,10*y,'.-k');
 
 [hdx,hdy] = errorbarxy(ax(1),x,y,dx,dy,'-r','LineWidth',2);
 
-
+%% only 2 datapoints
+close all; clear all; clc
+x = linspace(0,0.25,2);
+y = sin(2*pi*x);
+dy = 0.3*ones(size(x));
+dx = dy;
+plot(x,y,'.-k');
+errorbarxy(x,y,dx,dy);
 
 
 
