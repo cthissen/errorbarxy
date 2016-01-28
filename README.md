@@ -1,8 +1,8 @@
-# errorbarxy: 
+# errorbarxy: plot errors in x and y
 
 What is it?
 ----------------- 
-errorbarxy plots error bars in x and y. Errors can be asymmetric and vary by data point.
+Errors can be asymmetric and vary by data point.
 <img src="https://github.com/cthissen/errorbarxy/blob/master/errorbarxy.png" alt="errorbarxy" width="300px" height="300px">
 
 
