@@ -1,17 +1,11 @@
-# errorbarxy: Plot error bars in both x and y using MATLAB.
+# errorbarxy: 
+## Plot errors in x and y using MATLAB.
 
 What is it?
 ----------------- 
-errorbarxy plot error bars in x and y.
-For example,
-     x = linspace(0,2,20);
-     y = sin(2*pi*x);
-     dx = 0.1*ones(size(x));
-     dy = 0.3*ones(size(x));
-     plot(x,y,'.-k');
-     errorbarxy(x,y,dx,dy);
-   draws symmetric error bars around x and y
-<img src="https://github.com/cthissen/errorbarxy/blob/master/errorbarxy.png" alt="errorbarxy" width="400px" height="400px">
+errorbarxy plots error bars in x and y. Errors can be asymmetric and vary by data point.
+<img src="https://github.com/cthissen/errorbarxy/blob/master/errorbarxy.png" alt="errorbarxy" width="300px" height="300px">
+
 
 For comments, questions, or suggestions, please email cthissen@gmail.com or 
 leave a comment under the issues tab at github.com/cthissen/estream2
@@ -20,16 +14,26 @@ Christopher J. Thissen, Yale University
 
 Why?
 -----------------
-MATLAB's built-in errorbar function only allows for errors in x. 
+MATLAB's built-in errorbar function only plots errors in y. Sometimes x has errors too.
 
-Requirements & Installation
------------------- 
-No toolboxes are required to run the program, and no installation is necessary.
 
 Usage
 ------------------ 
-additional usage examples are given in test_errorbarxy.m, or by reading the documentation in errorbarxy.m
+Usage is simple.
+For example,
+````
+x = linspace(0,2,20);
+y = sin(2*pi*x);
+dx = 0.1*ones(size(x));
+dy = 0.3*ones(size(x));
+plot(x,y);
+errorbarxy(x,y,dx,dy);
+````
+draws error bars for x and y. 
 
+<img src="https://github.com/cthissen/errorbarxy/blob/master/errorbarxy2.png" alt="errorbarxy" width="300px" height="300px">
+
+Addtional details are given in errorbarxy.m. For examples see test_errorbarxy.m. No toolboxes are required.
 
 The Latest Version
 ------------------ 
@@ -46,7 +50,7 @@ Feedback
 Your comments are welcome! If you find any bugs or have feature requests report them to
 Christopher Thissen, christopher.thissen@yale.edu. 
 
-Issues can also be reported online: https://github.com/cthissen/estream2/issues
+Issues can also be reported online: https://github.com/cthissen/errorbarxy/issues
 
 
 License
