@@ -126,7 +126,7 @@ y = sin(2*pi*x);
 dy(:,1) = 0.1*ones(numel(x),1);
 dy(:,2) = 0.3*ones(numel(x),1);
 dx = 0.05*ones(size(x));
-plot(x,y,'.-k','LineWidth',2);
+plot(x,y,'.-b','LineWidth',2);
 [hdx,hdy] = errorbarxy(x,y,dx,dy,'-b','LineWidth',2);
 hdx(1).LineWidth = 10;
 hdy(10).Color = 'red';
