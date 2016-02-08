@@ -32,7 +32,7 @@ draws error bars for x and y.
 
 <img src="https://github.com/cthissen/errorbarxy/blob/master/errorbarxy2.png" alt="errorbarxy" width="300px" height="300px">
 
-Here's an example where each datapoint has unique errors. Inf and NaN values are ignored. The error bars can be plotted on any axis by specifying the axis in the first argument, just like the built-in plot(x,y) function.
+Here's an example where each datapoint has unique errors. The look of the errors can be adjusted using standard linespec inputs (e.g. 'LineWidth',2). Inf and NaN values are ignored.
 ````
 hFig = figure(1);
 hAx = axes;
@@ -51,6 +51,10 @@ hold(hAx,'on');
 scatter(x,y,50,'k','filled')
 errorbarxy(hAx,x,y,dx,dy,'b','LineWidth',2);
 ````
+<img src="https://github.com/cthissen/errorbarxy/blob/master/errorbarxy3.png" alt="errorbarxy" width="300px" height="300px">
+
+
+
 Finally, the look of individual error bars can be adjusted. For example:
 ````
 close all; clear all; clc
@@ -64,6 +68,7 @@ plot(x,y,'.-b','LineWidth',2);
 hdx(1).LineWidth = 10;
 hdy(10).Color = 'red';
 ````
+<img src="https://github.com/cthissen/errorbarxy/blob/master/errorbarxy4.png" alt="errorbarxy" width="300px" height="300px">
 
 
 Addtional details are in errorbarxy.m. For examples see test_errorbarxy.m. No toolboxes are required.
