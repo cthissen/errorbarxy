@@ -32,6 +32,40 @@ draws error bars for x and y.
 
 <img src="https://github.com/cthissen/errorbarxy/blob/master/errorbarxy2.png" alt="errorbarxy" width="300px" height="300px">
 
+Here's an example where each datapoint has unique errors. Inf and NaN values are ignored. The error bars can be plotted on any axis by specifying the axis in the first argument, just like the built-in plot(x,y) function.
+````
+hFig = figure(1);
+hAx = axes;
+x = linspace(0,2,15);
+y = sin(2*pi*x);
+dy(:,1) = 0.5*sin(x);
+dy(:,2) = 0.3*ones(numel(x),1);
+dx(:,1) = 0.05*ones(size(x));
+dx(:,2) = 0.4*sin(x);
+dx(10) = NaN;
+dx(12) = Inf;
+dy(4,1) = NaN;
+dy(10,1) = Inf;
+plot(x,y,'-k','LineWidth',1);
+hold(hAx,'on');
+scatter(x,y,50,'k','filled')
+errorbarxy(hAx,x,y,dx,dy,'b','LineWidth',2);
+````
+Finally, the look of individual error bars can be adjusted. For example:
+````
+close all; clear all; clc
+x = linspace(0,2,20);
+y = sin(2*pi*x);
+dy(:,1) = 0.1*ones(numel(x),1);
+dy(:,2) = 0.3*ones(numel(x),1);
+dx = 0.05*ones(size(x));
+plot(x,y,'.-b','LineWidth',2);
+[hdx,hdy] = errorbarxy(x,y,dx,dy,'-b','LineWidth',2);
+hdx(1).LineWidth = 10;
+hdy(10).Color = 'red';
+````
+
+
 Addtional details are in errorbarxy.m. For examples see test_errorbarxy.m. No toolboxes are required.
 
 The Latest Version
